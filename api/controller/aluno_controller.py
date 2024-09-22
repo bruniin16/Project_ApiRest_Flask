@@ -6,8 +6,11 @@ from ..dto import aluno_dto
 from ..service import aluno_service
 
 class AlunoController(Resource):
+    
     def get(self):
-        return "Teste aluno"
+        alunos = aluno_service.listar_alunos()
+        validate = aluno_schema.AlunoSchema(many=True)
+        return make_response(validate.jsonify(alunos), 200)
     
     def post(self):
         alunoSchema = aluno_schema.AlunoSchema()
@@ -24,4 +27,16 @@ class AlunoController(Resource):
 
             return make_response(aluno_json, 201)
     
+
+class AlunoDetailController(Resource):
+    
+    def get(self, id):
+        aluno = aluno_service.listar_id(id)
+        if aluno is None:
+            return make_response(jsonify("Aluno não encontrado."), 404)
+        else:
+            validate = aluno_schema.AlunoSchema()
+            return make_response(validate.jsonify(aluno), 200)
+
 api.add_resource(AlunoController,"/aluno")
+api.add_resource(AlunoDetailController,"/aluno/<int:id>")

@@ -8,3 +8,11 @@ def cadastrar_aluno(aluno):
     db.session.commit()
     
     return aluno_bd
+
+def listar_alunos():
+    alunos = aluno_model.Aluno.query.all() #select * from aluno
+    return alunos
+
+def listar_id(parm_id):
+    aluno = aluno_model.Aluno.query.filter_by(id=parm_id).first()
+    return aluno
