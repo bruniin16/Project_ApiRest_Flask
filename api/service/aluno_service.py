@@ -16,3 +16,13 @@ def listar_alunos():
 def listar_id(parm_id):
     aluno = aluno_model.Aluno.query.filter_by(id=parm_id).first()
     return aluno
+
+def att_aluno(aluno_bd, aluno_att):
+    aluno_bd.nome = aluno_att.nome
+    aluno_bd.data_nasc = aluno_att.data_nasc
+
+    db.session.commit() #update
+
+def del_aluno(aluno):
+    db.session.delete(aluno)
+    db.session.commit()
