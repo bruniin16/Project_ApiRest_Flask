@@ -13,8 +13,8 @@ def listar_alunos():
     alunos = aluno_model.Aluno.query.all() #select * from aluno
     return alunos
 
-def listar_id(parm_id):
-    aluno = aluno_model.Aluno.query.filter_by(id=parm_id).first()
+def listar_id(param_id):
+    aluno = aluno_model.Aluno.query.filter_by(id=param_id).first()
     return aluno
 
 def att_aluno(aluno_bd, aluno_att):

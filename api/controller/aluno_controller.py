@@ -68,6 +68,5 @@ class AlunoDetailController(Resource):
 
 
 api.add_resource(AlunoController,"/aluno")
-api.add_resource(AlunoController,"/aluno/<int:id>", endpoint="alterar", methods=["PUT"])
-api.add_resource(AlunoController,"/aluno/<int:id>", endpoint="excluir", methods=["DELETE"])
+api.add_resource(AlunoController,"/aluno/<int:id>", endpoint="alterar_excluir", methods=["PUT", "DELETE"])
 api.add_resource(AlunoDetailController,"/aluno/<int:id>")
